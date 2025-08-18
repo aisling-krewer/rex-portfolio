@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rex - Night City Fixer</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript
+      ><link rel="stylesheet" href="assets/css/noscript.css"
+    /></noscript>
+  </head>
+  <body class="is-preload-0 is-preload-1">
+    <!-- Auth Controls -->
+    <div class="auth-controls">
+      <div id="auth-status" class="auth-status">
+        Status: <span id="user-role">Anonymous</span>
+        <button id="auth-btn" onclick="toggleAuth()">Login</button>
+        <span>
+          <a href="#dashboard" class="button" id="dashboard-btn"
+            >Edgerunner Dashboard</a
+          >
+
+          <a href="#admin" class="button hidden" id="admin-btn"
+            >Fixer Console</a
+          >
+        </span>
+      </div>
+    </div>
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+      <!-- Home -->
+      <article id="home" class="panel special">
+        <div class="image">
+          <img
+            src="images/rex-profile.jpg"
+            alt=""
+            data-position="left center"
+          />
+        </div>
+        <div class="content">
+          <div class="inner">
+            <header>
+              <h1>Rex</h1>
+              <p>Connections. Solutions. Discretion.</p>
+            </header>
+            <nav id="nav">
+              <ul class="actions stacked special animated spinY">
+                <li><a href="#jobs" class="button">Available Gigs</a></li>
+                <li><a href="#about" class="button">About</a></li>
+                <li><a href="#contact" class="button">Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </article>
+
+      <!-- Login Panel -->
+      <article id="login" class="panel secondary">
+        <div class="image">
+          <img src="images/pic02.jpg" alt="" data-position="center center" />
+        </div>
+        <div class="content">
+          <div class="inner">
+            <ul class="actions animated spinX">
+              <li><a href="#home" class="button small back">Back</a></li>
+            </ul>
+            <header>
+              <h2>Access Terminal</h2>
+              <p>Verify your credentials, choom</p>
+            </header>
+            <div class="login-form">
+              <div class="fields">
+                <div class="field">
+                  <label for="username">Handle</label>
+                  <input
+                    type="text"
+                    name="username"
+                    id="username"
+                    placeholder="Your street name"
+                  />
+                </div>
+                <div class="field">
+                  <label for="password">Access Code</label>
+                  <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    placeholder="••••••••"
+                  />
+                </div>
+                <div class="field">
+                  <label for="role-select">Access Level</label>
+                  <select name="role-select" id="role-select">
+                    <option value="edgerunner">Edgerunner</option>
+                    <option value="veteran">Veteran Edgerunner</option>
+                    <option value="fixer">Fixer</option>
+                  </select>
+                </div>
+              </div>
+              <ul class="actions">
+                <li>
+                  <button onclick="authenticate()" class="button primary">
+                    Jack In
+                  </button>
+                </li>
+              </ul>
+              <p>
+                <em
+                  >Demo credentials: Use any username/password with your chosen
+                  role</em
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Jobs -->
+      <article id="jobs" class="panel secondary">
+        <div class="image">
+          <img src="images/pic02.jpg" alt="" data-position="center center" />
+        </div>
+        <div class="content">
+          <ul class="actions animated spinX">
+            <li><a href="#home" class="button small back">Back</a></li>
+          </ul>
+          <div class="inner">
+            <header>
+              <h2>Available Gigs</h2>
+            </header>
+            <p>
+              Current opportunities for qualified professionals. Compensation
+              reflects risk and required skill level.
+            </p>
+            <div id="job-listings">
+              <!-- Jobs populated by JavaScript based on user role -->
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Edgerunner Dashboard -->
+      <article id="dashboard" class="panel secondary">
+        <div class="image">
+          <img src="images/pic03.jpg" alt="" data-position="center center" />
+        </div>
+        <div class="content">
+          <ul class="actions animated spinX">
+            <li><a href="#home" class="button small back">Back</a></li>
+          </ul>
+          <div class="inner">
+            <header>
+              <h2>Edgerunner Dashboard</h2>
+              <p id="dashboard-welcome">Welcome back, choom</p>
+            </header>
+            <div id="dashboard-content" class="hidden">
+              <h3>Your Active Gigs</h3>
+              <div id="active-gigs"></div>
+
+              <h3>Reputation & Stats</h3>
+              <div id="user-stats"></div>
+
+              <h3>Available Actions</h3>
+              <ul class="actions">
+                <li>
+                  <button onclick="updateStatus()" class="button">
+                    Update Status
+                  </button>
+                </li>
+                <li>
+                  <button onclick="requestPayout()" class="button">
+                    Request Payout
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <div id="dashboard-login-required">
+              <p>
+                Access restricted. <a href="#login">Authenticate</a> to
+                continue.
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Admin Panel -->
+      <article id="admin" class="panel secondary">
+        <div class="image">
+          <img src="images/pic04.jpg" alt="" data-position="center center" />
+        </div>
+        <div class="content">
+          <ul class="actions animated spinX">
+            <li><a href="#home" class="button small back">Back</a></li>
+          </ul>
+          <div class="inner">
+            <header>
+              <h2>Fixer Console</h2>
+              <p>Network management and operations</p>
+            </header>
+            <div id="admin-content" class="hidden">
+              <h3>Active Edgerunners</h3>
+              <div id="edgerunner-list"></div>
+
+              <h3>Job Management</h3>
+              <button onclick="showNewJobForm()" class="button primary">
+                Post New Gig
+              </button>
+              <button onclick="viewPayments()" class="button">
+                Payment Queue
+              </button>
+
+              <div id="new-job-form" class="hidden" style="margin-top: 20px">
+                <h4>New Gig Posting</h4>
+                <div class="fields">
+                  <div class="field">
+                    <label>Gig Title</label>
+                    <input
+                      type="text"
+                      id="job-title"
+                      placeholder="Data Recovery - Arasaka Facility"
+                    />
+                  </div>
+                  <div class="field">
+                    <label>Required Tier</label>
+                    <select id="job-tier">
+                      <option value="street">Street Level</option>
+                      <option value="veteran">Veteran</option>
+                      <option value="legendary">Legendary</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label>Payout (eddies)</label>
+                    <input type="number" id="job-payout" placeholder="50000" />
+                  </div>
+                  <div class="field">
+                    <label>Description</label>
+                    <textarea id="job-description" rows="4"></textarea>
+                  </div>
+                </div>
+                <button onclick="postJob()" class="button primary">
+                  Post Gig
+                </button>
+              </div>
+            </div>
+            <div id="admin-login-required">
+              <p>
+                Fixer-level access required.
+                <a href="#login">Authenticate</a> with elevated credentials.
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- About -->
+      <article id="about" class="panel secondary">
+        <div class="image">
+          <img src="images/pic03.jpg" alt="" data-position="center center" />
+        </div>
+        <div class="content">
+          <ul class="actions animated spinX">
+            <li><a href="#home" class="button small back">Back</a></li>
+          </ul>
+          <div class="inner">
+            <header>
+              <h2>About</h2>
+              <p>King of Little Europe</p>
+            </header>
+            <p>
+              Opportunities don't wait, and neither do I. My role is simple: I
+              bring the right people together with the right resources, at the
+              right time. Whether you require specialized equipment, reliable
+              professionals, or information that doesn't travel through official
+              channels, I provide solutions with efficiency and discretion.
+            </p>
+            <p>I'm not here to make noise — I'm here to make things happen.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Contact -->
+      <article id="contact" class="panel secondary">
+        <div class="image">
+          <img src="images/pic04.jpg" alt="" data-position="bottom center" />
+        </div>
+        <div class="content">
+          <ul class="actions animated spinX">
+            <li><a href="#home" class="button small back">Back</a></li>
+          </ul>
+          <div class="inner">
+            <header>
+              <h2>Contact</h2>
+            </header>
+            <p>
+              Every client has different needs. Every conversation remains
+              confidential. Reach out through the channel most comfortable for
+              you:
+            </p>
+            <ul>
+              <li>Encrypted Line: SIG/Blackline-04:Encrypted</li>
+              <li>Courier Drop: The concierge desk at the Highline Hotel</li>
+              <li>Direct Request Form: Submit securely via this site</li>
+            </ul>
+            <p>Your time is valuable. So is mine. Let's not waste either.</p>
+            <form method="post" action="#" onsubmit="submitContactForm(event)">
+              <div class="fields">
+                <div class="field half">
+                  <label for="name">Handle</label>
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    placeholder="Your street name"
+                  />
+                </div>
+                <div class="field half">
+                  <label for="email">Secure Line</label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="encrypted@darknet.nc"
+                  />
+                </div>
+                <div class="field">
+                  <label for="gig-type">Gig Type</label>
+                  <select name="gig-type" id="gig-type">
+                    <option value="">-</option>
+                    <option value="data-recovery">Data Recovery</option>
+                    <option value="wetwork">Wetwork</option>
+                    <option value="netrunning">Netrunning</option>
+                    <option value="transport">Transport & Logistics</option>
+                    <option value="corpo-infiltration">
+                      Corporate Infiltration
+                    </option>
+                  </select>
+                </div>
+                <div class="field half">
+                  <input
+                    type="radio"
+                    id="priority-standard"
+                    name="priority"
+                    value="standard"
+                    checked
+                  />
+                  <label for="priority-standard">Standard Timeline</label>
+                </div>
+                <div class="field half">
+                  <input
+                    type="radio"
+                    id="priority-urgent"
+                    name="priority"
+                    value="urgent"
+                  />
+                  <label for="priority-urgent">Urgent (Extra Eddies)</label>
+                </div>
+                <div class="field">
+                  <label for="message">Job Details</label>
+                  <textarea
+                    name="message"
+                    id="message"
+                    placeholder="Describe the work needed. Be specific about security requirements."
+                    rows="5"
+                  ></textarea>
+                </div>
+              </div>
+              <ul class="actions">
+                <li>
+                  <button type="submit" class="button primary">
+                    Submit Request
+                  </button>
+                </li>
+                <li><input type="reset" value="Clear" /></li>
+              </ul>
+            </form>
+          </div>
+        </div>
+      </article>
+
+      <!-- Footer -->
+      <footer id="footer">
+        <p class="copyright">&copy; Rex Enterprises - Night City Operations</p>
+      </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/custom.js"></script>
+  </body>
+</html>
