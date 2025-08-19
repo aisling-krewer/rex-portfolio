@@ -1,0 +1,41 @@
+{
+  "routes": [
+    {
+      "route": "/",
+      "allowedRoles": ["anonymous"]
+    },
+    {
+      "route": "/about",
+      "allowedRoles": ["anonymous"]
+    },
+    {
+      "route": "/dashboard",
+      "allowedRoles": ["authenticated"]
+    },
+    {
+      "route": "/jobs/admin/*",
+      "allowedRoles": ["fixer"]
+    },
+    {
+      "route": "/jobs/verified/*",
+      "allowedRoles": ["fixer", "verified-edgerunner"]
+    },
+    {
+      "route": "/jobs/*",
+      "allowedRoles": ["fixer", "verified-edgerunner", "new-edgerunner"]
+    },
+    {
+      "route": "/*",
+      "statusCode": 404
+    }
+  ],
+  "responseOverrides": {
+    "401": {
+      "redirect": "/login",
+      "statusCode": 302
+    },
+    "404": {
+      "rewrite": "/404.html"
+    }
+  }
+}
