@@ -23,10 +23,6 @@
     {
       "route": "/jobs/*",
       "allowedRoles": ["fixer", "verified-edgerunner", "new-edgerunner"]
-    },
-    {
-      "route": "/*",
-      "statusCode": 404
     }
   ],
   "responseOverrides": {
