@@ -39,7 +39,7 @@
     }
   },
   "navigationFallback": {
-    "rewrite": "/index.html",
-    "exclude": ["/assets/*", "/images/*"]
+    "rewrite": "index.html",
+    "exclude": ["/assets/*", "/images/*", "/*.css", "/*.js"]
   }
 }
