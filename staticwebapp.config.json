@@ -41,5 +41,11 @@
   "navigationFallback": {
     "rewrite": "index.html",
     "exclude": ["/assets/*", "/images/*", "/*.css", "/*.js"]
+  },
+  "mimeTypes": {
+    ".css": "text/css"
+  },
+  "globalHeaders": {
+    "Access-Control-Allow-Origin": "*"
   }
 }
