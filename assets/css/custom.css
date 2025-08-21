@@ -1,0 +1,20 @@
+.panel > .content {
+  background: #111;
+  color: pink;
+}
+
+#home {
+  box-shadow: 10px 0 90px 10px hotpink;
+}
+
+.button {
+  color: pink !important;
+}
+
+body {
+  background: black;
+}
+
+h1 {
+  color: #e1e1e1;
+}
