@@ -13,12 +13,12 @@
       "allowedRoles": ["authenticated"]
     },
     {
-      "route": "/jobs/admin/*",
-      "allowedRoles": ["fixer"]
+      "route": "/contact",
+      "allowedRoles": ["authenticated"]
     },
     {
-      "route": "/jobs/verified/*",
-      "allowedRoles": ["fixer", "verified-edgerunner"]
+      "route": "/admin/*",
+      "allowedRoles": ["fixer"]
     },
     {
       "route": "/jobs/*",

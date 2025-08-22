@@ -1,0 +1,58 @@
+<!-- Admin Panel -->
+<article id="admin" class="panel secondary">
+  <div class="image">
+    <img src="images/pic04.jpg" alt="" data-position="center center" />
+  </div>
+  <div class="content">
+    <ul class="actions animated spinX">
+      <li><a href="#home" class="button small back">Back</a></li>
+    </ul>
+    <div class="inner">
+      <header>
+        <h2>Fixer Console</h2>
+        <p>Network management and operations</p>
+      </header>
+      <div id="admin-content">
+        <h3>Active Edgerunners</h3>
+        <div id="edgerunner-list"></div>
+
+        <h3>Job Management</h3>
+        <button onclick="showNewJobForm()" class="button primary">
+          Post New Gig
+        </button>
+        <button onclick="viewPayments()" class="button">Payment Queue</button>
+
+        <div id="new-job-form" style="margin-top: 20px">
+          <h4>New Gig Posting</h4>
+          <div class="fields">
+            <div class="field">
+              <label>Gig Title</label>
+              <input
+                type="text"
+                id="job-title"
+                placeholder="Data Recovery - Arasaka Facility"
+              />
+            </div>
+            <div class="field">
+              <label>Required Tier</label>
+              <select id="job-tier">
+                <option value="street">Street Level</option>
+                <option value="veteran">Veteran</option>
+                <option value="legendary">Legendary</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Payout (eddies)</label>
+              <input type="number" id="job-payout" placeholder="50000" />
+            </div>
+            <div class="field">
+              <label>Description</label>
+              <textarea id="job-description" rows="4"></textarea>
+            </div>
+          </div>
+          <button onclick="postJob()" class="button primary">Post Gig</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,41 @@
+<!-- Edgerunner Dashboard -->
+<article id="dashboard" class="panel secondary">
+  <div class="image">
+    <img src="images/pic03.jpg" alt="" data-position="center center" />
+  </div>
+  <div class="content">
+    <ul class="actions animated spinX">
+      <li><a href="#home" class="button small back">Back</a></li>
+    </ul>
+    <div class="inner">
+      <header>
+        <h2>Edgerunner Dashboard</h2>
+        <p id="dashboard-welcome">Welcome back, choom</p>
+      </header>
+      <div id="dashboard-content">
+        <h3>Your Active Gigs</h3>
+        <div id="active-gigs"></div>
+
+        <h3>Reputation & Stats</h3>
+        <div id="user-stats"></div>
+
+        <h3>Available Actions</h3>
+        <ul class="actions">
+          <li>
+            <button onclick="updateStatus()" class="button">
+              Update Status
+            </button>
+          </li>
+          <li>
+            <button onclick="requestPayout()" class="button">
+              Request Payout
+            </button>
+          </li>
+        </ul>
+      </div>
+      <div id="dashboard-login-required">
+        <p>Access restricted. <a href="#login">Authenticate</a> to continue.</p>
+      </div>
+    </div>
+  </div>
+</article>

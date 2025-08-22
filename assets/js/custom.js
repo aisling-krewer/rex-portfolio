@@ -207,30 +207,6 @@
         }
       }
 
-      function updateAdminPanel() {
-        const adminContent = document.getElementById("admin-content");
-        const loginRequired = document.getElementById("admin-login-required");
-
-        if (currentUser.role === "fixer") {
-          adminContent.classList.remove("hidden");
-          loginRequired.classList.add("hidden");
-
-          document.getElementById("edgerunner-list").innerHTML = `
-            <div class="gig-card">
-              <h4>V <span class="role-badge">Veteran</span></h4>
-              <p>Status: Active | Jobs Completed: 23 | Reputation: Excellent</p>
-            </div>
-            <div class="gig-card">
-              <h4>Jackie <span class="role-badge">Edgerunner</span></h4>
-              <p>Status: On Mission | Jobs Completed: 8 | Reputation: Solid</p>
-            </div>
-          `;
-        } else {
-          adminContent.classList.add("hidden");
-          loginRequired.classList.remove("hidden");
-        }
-      }
-
       function getUserReputation() {
         switch (currentUser.role) {
           case "veteran":
