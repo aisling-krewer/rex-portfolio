@@ -21,7 +21,6 @@
           Post New Gig
         </button>
         <button onclick="viewPayments()" class="button">Payment Queue</button>
-
         <div id="new-job-form" style="margin-top: 20px">
           <h4>New Gig Posting</h4>
           <div class="fields">
@@ -50,7 +49,8 @@
               <textarea id="job-description" rows="4"></textarea>
             </div>
           </div>
-          <button onclick="postJob()" class="button primary">Post Gig</button>
+          <button id="post-job-btn" class="button primary">Post Gig</button>
+          <div id="fixer-message"></div>
         </div>
       </div>
     </div>

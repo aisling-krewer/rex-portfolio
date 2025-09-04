@@ -18,11 +18,19 @@
     },
     {
       "route": "/admin/*",
-      "allowedRoles": ["fixer"]
+      "allowedRoles": ["Fixer"]
     },
     {
       "route": "/jobs/*",
-      "allowedRoles": ["fixer", "verified-edgerunner", "new-edgerunner"]
+      "allowedRoles": ["authenticated"]
+    },
+    {
+      "route": "/api/jobs/*",
+      "allowedRoles": ["authenticated"]
+    },
+    {
+      "route": "/api/fixer/*",
+      "allowedRoles": ["Fixer"]
     }
   ],
   "responseOverrides": {
